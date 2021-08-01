@@ -1,0 +1,12 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t  laxman/docker-frontend -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true laxman/docker-frontend npm run test
+
